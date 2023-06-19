@@ -58,14 +58,14 @@ const Card = ({ type, video }) => {
 
   useEffect(() => {
     const fetchChannel = async () => {
-      const res = await axios.get(`/users/find/${video.userId}`);
+      const res = await axios.get(`https://youtube-icvo.onrender.com/api/users/find/${video.userId}`);
       setChannel(res.data);
     };
     fetchChannel();
   }, [video.userId]);
 
   return (
-    <Link to={`/video/${video._id}`} style={{ textDecoration: "none" }}>
+    <Link to={`https://youtube-icvo.onrender.com/api/video/${video._id}`} style={{ textDecoration: "none" }}>
       <Container type={type}>
         <Image
           type={type}
