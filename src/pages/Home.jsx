@@ -10,10 +10,11 @@ const Container = styled.div`
 
 const Home = ({type}) => {
   const [videos, setVideos] = useState([]);
-   console.log(videos);
+   
   useEffect(() => {
     const fetchVideos = async () => {
       const res = await axios.get(`https://youtube-icvo.onrender.com/api/videos/${type}`);
+      console.log(res.data);
       setVideos(res.data);
     };
     fetchVideos();
