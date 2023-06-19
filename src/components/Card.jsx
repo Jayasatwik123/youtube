@@ -65,7 +65,7 @@ const Card = ({ type, video }) => {
   }, [video.userId]);
 
   return (
-    <Link to={`https://youtube-icvo.onrender.com/api/videos/find/${video._id}`} style={{ textDecoration: "none" }}>
+    <Link to={`https://youtube-icvo.onrender.com/api/video/${video._id}`} style={{ textDecoration: "none" }}>
       <Container type={type}>
         <Image
           type={type}
