@@ -141,15 +141,15 @@ const Video = () => {
 
   const handleLike = async () => {
     await axios.put(`https://youtube-icvo.onrender.com/api/users/like/${currentVideo?._id}`);
-    dispatch(like(currentUser._id));
+    dispatch(like(currentUser?._id));
   };
   const handleDislike = async () => {
     await axios.put(`https://youtube-icvo.onrender.com/api/users/dislike/${currentVideo?._id}`);
-    dispatch(dislike(currentUser._id));
+    dispatch(dislike(currentUser?._id));
   };
 
   const handleSub = async () => {
-    currentUser.subscribedUsers.includes(channel._id)
+    currentUser?.subscribedUsers.includes(channel._id)
       ? await axios.put(`https://youtube-icvo.onrender.com/api/users/unsub/${channel._id}`)
       : await axios.put(`https://youtube-icvo.onrender.com/api/users/sub/${channel._id}`);
     dispatch(subscription(channel._id));
