@@ -84,7 +84,7 @@ const SignIn = () => {
       withCredentials:true
     }
     try {
-      const res = await axios.post("https://youtube-icvo.onrender.com/api/auth/signin", { name, password },config);
+      const res = await axios.post("https://youtube-icvo.onrender.com/api/auth/signin", { name, password });
       dispatch(loginSuccess(res.data));
       navigate("/")
     } catch (err) {
