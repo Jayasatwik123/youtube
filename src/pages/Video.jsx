@@ -124,7 +124,10 @@ const Video = () => {
   const path = useLocation().pathname.split("/")[2];
 
   const [channel, setChannel] = useState({});
-
+const config={
+    headers:{"Content-Type":"application/json"},
+    withCredentials:true
+}
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -140,18 +143,18 @@ const Video = () => {
   }, [path, dispatch]);
 
   const handleLike = async () => {
-    await axios.put(`https://youtube-icvo.onrender.com/api/users/like/${currentVideo?._id}`);
+    await axios.put(`https://youtube-icvo.onrender.com/api/users/like/${currentVideo?._id}`,config);
     dispatch(like(currentUser?._id));
   };
   const handleDislike = async () => {
-    await axios.put(`https://youtube-icvo.onrender.com/api/users/dislike/${currentVideo?._id}`);
+    await axios.put(`https://youtube-icvo.onrender.com/api/users/dislike/${currentVideo?._id}`,config);
     dispatch(dislike(currentUser?._id));
   };
 
   const handleSub = async () => {
     currentUser?.subscribedUsers.includes(channel._id)
-      ? await axios.put(`https://youtube-icvo.onrender.com/api/users/unsub/${channel._id}`)
-      : await axios.put(`https://youtube-icvo.onrender.com/api/users/sub/${channel._id}`);
+      ? await axios.put(`https://youtube-icvo.onrender.com/api/users/unsub/${channel._id}`,config)
+      : await axios.put(`https://youtube-icvo.onrender.com/api/users/sub/${channel._id}`,config);
     dispatch(subscription(channel._id));
   };
 
